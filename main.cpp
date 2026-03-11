@@ -1,80 +1,24 @@
 #include <iostream>
 using namespace std;
 
-// 문자 개수 계산
-int CountText(char* Tx)
-{
-	int Count = 0;
-
-	for (; ; )
-	{
-		if (*Tx == '\0')
-		{
-			return Count;
-		}
-		Count++;
-		Tx++;
-	}
-}
-
-// 특정 문자 위치 찾기
-int SearchText(char* Tx, char FindTx)
-{
-	int Loc = 1;
-
-	for (; ;)
-	{
-		if (*Tx == '\0')
-		{
-			return 0;
-		}
-		else if (*Tx == FindTx)
-		{
-			return Loc;
-		}
-		Loc++;
-		Tx++;
-	}
-
-}
-
-// 특정 문자 바꾸기
-void ChangeText(char *Tx, char ChangeTx, char ChangeToTx)
-{
-	for (; ;)
-	{
-		if (*Tx == '\0')
-		{
-			break;
-		}
-		else if (*Tx == ChangeTx)
-		{
-			*Tx = ChangeToTx;
-		}
-		Tx++;
-	}
-	return;
-}
-
-
 int main()
 {
-	char Text[10] = "Hello";
-	int TextLength = 0;
+	// 숫자 입력 받아서 그걸 크기로 배열을 만들어서
+	// 1부터 크기까지 초기화 하고 출력하는 프로그램
 
-	TextLength = CountText(Text);
+	int Size = 0;
+	cin >> Size;
 
-	char FindTx = 'e';
-	char ChangeTx = 'l';
-	char ChangeToTx = 'x';
+	int* Numbers = new int[Size];
 
-	cout << "Text Length : " << TextLength << endl;
+	for (int i = 0; i < Size; i++)
+	{
+		Numbers[i] = i + 1;
+		cout << Numbers[i] << " ";
+	}
 
-	cout << " e is " << SearchText(Text, FindTx) << endl;
-
-	ChangeText(Text, ChangeTx, ChangeToTx);
-
-	cout << "Change l -> x : " << Text << endl;
+	delete[] Numbers;
+	Numbers = nullptr;
 
 	return 0;
 }
